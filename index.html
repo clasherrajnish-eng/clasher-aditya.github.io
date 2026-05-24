@@ -15,32 +15,35 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    // LOGIN FUNCTION
+    // 1. Force Login function
     window.signInWithGoogle = function() {
         signInWithPopup(auth, provider).then(() => {
-            document.getElementById('login-gate').style.display = 'none';
+            alert("Login successful! You can now continue.");
+            location.reload(); 
+        }).catch((error) => {
+            console.error("Login failed", error);
         });
     }
 
-    // TRACKING ENGINE
-    window.viewLayout = function(category) {
+    // 2. Layout Tracker (The "10-copy" limit)
+    window.copyBase = function(link) {
         let count = parseInt(localStorage.getItem('copyCount') || "0");
-        
+
         if (count >= 10) {
-            alert("You've reached your free limit! Please sign in to continue.");
+            // Trigger the Login Gate
             document.getElementById('login-gate').style.display = 'flex';
         } else {
             count++;
             localStorage.setItem('copyCount', count);
-            alert("Fetching your base! (Downloads used: " + count + "/10)");
-            // Add your redirect logic here
+            alert("Base copied! (" + count + "/10 used)");
+            window.open(link, '_blank');
         }
     }
 
+    // 3. Keep user logged in
     onAuthStateChanged(auth, (user) => {
         if (user) {
             document.getElementById('login-gate').style.display = 'none';
-            // Show profile badge
         }
     });
 </script>
