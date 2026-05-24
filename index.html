@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasher Aditya | Base Engine</title>
+    <title>Clasher Aditya | Premium Layout Engine</title>
     <style>
         /* Unique Futuristic Dark/Teal Gaming Theme */
         body {
@@ -55,154 +55,134 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
             flex: 1; /* Pushes footer to bottom */
         }
 
-        /* UNIQUE GENERATOR INTERFACE PANELS */
-        .generator-panel {
-            background-color: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            border-left: 4px solid #00f2fe;
+            padding-left: 12px;
+        }
+
+        /* PREMIUM TOWN HALL HORIZONTAL SELECTOR GRID */
+        .th-selector-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 10px;
             margin-bottom: 40px;
         }
 
-        .panel-title {
-            font-size: 1.4rem;
+        .th-btn {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
             color: #00f2fe;
-            margin-top: 0;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 4px solid #00f2fe;
-            padding-left: 10px;
-        }
-
-        .control-row {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        label {
+            padding: 14px 5px;
+            border-radius: 8px;
+            cursor: pointer;
             font-weight: bold;
             font-size: 0.95rem;
-            color: #94a3b8;
-            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.2s ease;
         }
 
-        select {
-            background-color: #1e293b;
-            border: 2px solid #334155;
-            color: #ffffff;
-            padding: 14px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            outline: none;
-            transition: border-color 0.2s;
-            width: 100%;
-        }
-
-        select:focus {
-            border-color: #00f2fe;
-        }
-
-        .action-btn {
-            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+        .th-btn:hover, .th-btn.active {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
             color: #060913;
-            border: none;
-            padding: 16px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .action-btn:hover {
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
         }
 
-        /* DYNAMIC DISPLAY OUTPUT CARD */
-        .output-display {
-            display: none;
+        /* LIVE LAYOUT CARDS GRID SYSTEM */
+        .base-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .category-card {
             background-color: #0f172a;
-            border: 2px solid #00f2fe;
+            border: 1px solid #1e293b;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card-body {
-            padding: 25px;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
         }
 
-        .th-graphic-container {
-            height: 140px;
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f2fe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+        }
+
+        .base-img-container {
+            width: 100%;
+            height: 160px;
+            background-color: #131e35;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            border-bottom: 1px solid #1e293b;
         }
 
-        .th-graphic-container img {
-            height: 100%;
+        .base-img-container img {
+            height: 85%;
+            width: auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
-        .card-body h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.6rem;
+        .category-card:hover .base-img-container img {
+            transform: scale(1.08);
+        }
+
+        .category-card h3 {
+            margin: 18px 0 8px 0;
             color: #ffffff;
-        }
-
-        .card-body p {
-            color: #94a3b8;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background-color: #ef4444;
-            color: white;
-            padding: 14px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
+            font-size: 1.35rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: background 0.2s;
         }
 
-        .download-btn:hover {
-            background-color: #dc2626;
+        .category-card p {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            padding: 0 15px;
+            margin-bottom: 22px;
+            min-height: 42px;
+            line-height: 1.5;
         }
 
-        /* METICULOUS FOOTER STYLING WITH LIVE LINKS */
+        .view-layout-btn {
+            display: block;
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            color: #060913;
+            padding: 14px 0;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .view-layout-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* PREMIUM SOCIAL & BUSINESS FOOTER */
         .premium-footer {
             background-color: #0c1220;
             border-top: 1px solid #1e293b;
@@ -227,7 +207,6 @@
             transition: all 0.2s ease;
         }
 
-        /* Platform branding styling configs */
         .social-link.instagram {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: #fff;
@@ -257,14 +236,6 @@
             font-size: 0.85rem;
             margin: 0;
         }
-
-        @media (min-width: 768px) {
-            .control-row {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -279,50 +250,72 @@
 
     <div class="container">
 
-        <div class="generator-panel">
-            <h2 class="panel-title">Base Search Engine</h2>
-            <div class="control-row">
-                <div class="control-group">
-                    <label for="th-select">Select Town Hall</label>
-                    <select id="th-select">
-                        <option value="6">Town Hall 6</option>
-                        <option value="7">Town Hall 7</option>
-                        <option value="8">Town Hall 8</option>
-                        <option value="9">Town Hall 9</option>
-                        <option value="10">Town Hall 10</option>
-                        <option value="11">Town Hall 11</option>
-                        <option value="12">Town Hall 12</option>
-                        <option value="13">Town Hall 13</option>
-                        <option value="14">Town Hall 14</option>
-                        <option value="15" selected>Town Hall 15</option>
-                        <option value="16">Town Hall 16</option>
-                        <option value="17">Town Hall 17</option>
-                        <option value="18">Town Hall 18</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="type-select">Select Strategy Category</label>
-                    <select id="type-select">
-                        <option value="war">War Base (Anti-3 Star)</option>
-                        <option value="trophy">Trophy Base (Pushing)</option>
-                        <option value="progress">Progress Layout (Upgrades)</option>
-                        <option value="showcase">Showcase Base (Artistic)</option>
-                        <option value="custom">Custom Subscriber Base</option>
-                    </select>
-                </div>
-            </div>
-            <button class="action-btn" onclick="generateBase()">Find Best Layout</button>
+        <h2 class="section-title">Select Town Hall level</h2>
+        <div class="th-selector-container">
+            <button class="th-btn" onclick="selectTH(6)">TH 6</button>
+            <button class="th-btn" onclick="selectTH(7)">TH 7</button>
+            <button class="th-btn" onclick="selectTH(8)">TH 8</button>
+            <button class="th-btn" onclick="selectTH(9)">TH 9</button>
+            <button class="th-btn" onclick="selectTH(10)">TH 10</button>
+            <button class="th-btn" onclick="selectTH(11)">TH 11</button>
+            <button class="th-btn" onclick="selectTH(12)">TH 12</button>
+            <button class="th-btn" onclick="selectTH(13)">TH 13</button>
+            <button class="th-btn" onclick="selectTH(14)">TH 14</button>
+            <button class="th-btn active" onclick="selectTH(15)">TH 15</button>
+            <button class="th-btn" onclick="selectTH(16)">TH 16</button>
+            <button class="th-btn" onclick="selectTH(17)">TH 17</button>
+            <button class="th-btn" onclick="selectTH(18)">TH 18</button>
         </div>
 
-        <div class="output-display" id="result-display">
-            <div class="card-body">
-                <div class="th-graphic-container">
-                    <img id="display-th-img" src="" alt="Town Hall Asset">
+        <div id="th-display-title" style="font-size: 1.6rem; color: #00f2fe; font-weight: bold; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Town Hall 15 Layout Packs</div>
+
+        <div class="base-categories-grid">
+            
+            <div class="category-card">
+                <div class="base-img-container">
+                    <img id="img-war" src="https://coc.guide/static/imgs/other/townhall15.png" alt="War Base">
                 </div>
-                <h3 id="display-title">Layout Found!</h3>
-                <p id="display-desc"></p>
-                <a href="#" class="download-btn" id="display-link">Copy Base Link</a>
+                <h3>War Bases</h3>
+                <p id="desc-war">Pro configurations custom engineered to stop heavy 3-star meta compositions.</p>
+                <button class="view-layout-btn" onclick="viewLayout('war')">Copy Base Link</button>
             </div>
+
+            <div class="category-card">
+                <div class="base-img-container">
+                    <img id="img-trophy" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Trophy Base">
+                </div>
+                <h3>Trophy Bases</h3>
+                <p id="desc-trophy">Secure structures explicitly optimized for rank climbing and Legend League defense.</p>
+                <button class="view-layout-btn" onclick="viewLayout('trophy')">Copy Base Link</button>
+            </div>
+
+            <div class="category-card">
+                <div class="base-img-container">
+                    <img id="img-progress" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Progress Base">
+                </div>
+                <h3>Progress Bases</h3>
+                <p id="desc-progress">Clean rows designed to structure builders and monitor upgrades efficiently.</p>
+                <button class="view-layout-btn" onclick="viewLayout('progress')">Copy Base Link</button>
+            </div>
+
+            <div class="category-card">
+                <div class="base-img-container">
+                    <img id="img-showcase" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Showcase Base">
+                </div>
+                <h3>Showcase Bases</h3>
+                <p id="desc-showcase">Unique cosmetic builds, decorative patterns, and creative community wall art maps.</p>
+                <button class="view-layout-btn" onclick="viewLayout('showcase')">Copy Base Link</button>
+            </div>
+
+            <div class="category-card">
+                <div class="base-img-container">
+                    <img id="img-custom" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Custom Base">
+                </div>
+                <h3>Custom Bases</h3>
+                <p id="desc-custom">Subscribers special edition build paths created for ultimate customized match security.</p>
+                <button class="view-layout-btn" onclick="viewLayout('custom')">Copy Base Link</button>
+            </div>
+
         </div>
 
     </div>
@@ -334,10 +327,12 @@
             <a href="https://www.paypal.com/paypalme/clasheradi44" target="_blank" class="social-link paypal">💳 Support via PayPal</a>
             <a href="mailto:clasheraditya44@gmail.com" class="social-link email">✉️ Business Email</a>
         </div>
-        <p class="footer-credits">© 2026 Clasher Aditya. All rights reserved. Powered by your unique layout engine.</p>
+        <p class="footer-credits">© 2026 Clasher Aditya. All rights reserved. Custom Engineered Grid Platform.</p>
     </footer>
 
     <script>
+        let currentTH = 15;
+
         const thImages = {
             6: "https://coc.guide/static/imgs/other/townhall6.png",
             7: "https://coc.guide/static/imgs/other/townhall7.png",
@@ -354,47 +349,36 @@
             18: "https://coc.guide/static/imgs/other/townhall17.png"
         };
 
-        function generateBase() {
-            const th = document.getElementById('th-select').value;
-            const type = document.getElementById('type-select').value;
+        function selectTH(level) {
+            currentTH = level;
             
-            const displayCard = document.getElementById('result-display');
-            const title = document.getElementById('display-title');
-            const desc = document.getElementById('display-desc');
-            const img = document.getElementById('display-th-img');
-            const linkButton = document.getElementById('display-link');
+            // 1. Update Title Header 
+            document.getElementById('th-display-title').innerText = "Town Hall " + level + " Layout Packs";
+            
+            // 2. Change all images simultaneously matching the chosen level
+            const imgUrl = thImages[level] || thImages[15];
+            document.getElementById('img-war').src = imgUrl;
+            document.getElementById('img-trophy').src = imgUrl;
+            document.getElementById('img-progress').src = imgUrl;
+            document.getElementById('img-showcase').src = imgUrl;
+            document.getElementById('img-custom').src = imgUrl;
 
-            img.src = thImages[th] || thImages[15];
+            // 3. Update descriptions dynamically inside card fields
+            document.getElementById('desc-war').innerText = "Pro configurations custom engineered to stop heavy 3-star meta compositions at TH " + level + ".";
+            document.getElementById('desc-trophy').innerText = "Secure structures explicitly optimized for rank climbing and Legend League defense at TH " + level + ".";
+            document.getElementById('desc-progress').innerText = "Clean rows designed to structure builders and monitor upgrades efficiently at TH " + level + ".";
+            document.getElementById('desc-showcase').innerText = "Unique cosmetic builds, decorative patterns, and creative community wall art maps at TH " + level + ".";
+            document.getElementById('desc-custom').innerText = "Subscribers special edition build paths created for ultimate customized match security at TH " + level + ".";
 
-            let typeName = "";
-            if(type === 'war') {
-                typeName = "Pro War Layout";
-                desc.innerText = "Highly defensive Anti-3 Star structural map built specifically for Town Hall " + th + " Clan Wars and CWL rounds.";
-                linkButton.href = "#"; 
-            } else if(type === 'trophy') {
-                typeName = "Legend Trophy Push";
-                desc.innerText = "Solid resource configuration protecting structures to keep your trophies safe and help you climb leagues fast at TH " + th + ".";
-                linkButton.href = "#";
-            } else if(type === 'progress') {
-                typeName = "Progress Checking Map";
-                desc.innerText = "An organized grid layout putting all walls and defenses side-by-side to track your upgrades seamlessly at TH " + th + ".";
-                linkButton.href = "#";
-            } else if(type === 'showcase') {
-                typeName = "Artistic Community Showcase";
-                desc.innerText = "Creative aesthetic shape layouts or funny pixel-art designs to show off to your clan mates at Town Hall " + th + ".";
-                linkButton.href = "#";
-            } else {
-                typeName = "Premium Custom Layout";
-                desc.innerText = "Subscribers exclusive design path, modified against top meta armies to provide ultimate safety at Town Hall " + th + ".";
-                linkButton.href = "#";
-            }
+            // 4. Toggle active visual selector states on clicked elements
+            const buttons = document.querySelectorAll('.th-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-            title.innerText = "Town Hall " + th + " " + typeName;
-
-            displayCard.style.display = 'none';
-            setTimeout(() => {
-                displayCard.style.display = 'block';
-            }, 50);
+        function viewLayout(category) {
+            alert("Fetching your premium Clash link for Town Hall " + currentTH + " " + category.toUpperCase() + " base right now!");
+            // This is where we plug your exact clash of clans game-app map download redirect links next!
         }
     </script>
 </body>
