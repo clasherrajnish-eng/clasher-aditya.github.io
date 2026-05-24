@@ -5,13 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasher Aditya</title>
     <style>
-        /* General Page Styling */
+        /* Crazy Cyberpunk Gaming Theme */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
+            background-color: #0b0f19;
             color: #f8fafc;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND GLOW EFFECTS */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 210, 255, 0.15);
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            filter: blur(100px);
+            z-index: -1;
         }
 
         /* HEADER & LOGO STYLING */
@@ -22,168 +37,207 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            background-color: #1e293b;
-            border-bottom: 3px solid #00d2ff;
+            background: linear-gradient(180deg, #111827 0%, #0b0f19 100%);
+            border-bottom: 3px solid #ff4655;
+            box-shadow: 0 4px 30px rgba(255, 70, 85, 0.2);
         }
 
         .logo-link {
             text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .logo-link:hover {
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(3deg);
         }
 
         .channel-logo {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            border: 4px solid #00d2ff;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+            border: 4px solid #ff4655;
+            box-shadow: 0 0 25px rgba(255, 70, 85, 0.7);
             object-fit: cover;
             margin-bottom: 15px;
         }
 
         .header-text h1 {
-            color: #00d2ff;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin: 0 0 10px 0;
-            font-size: 2.8rem;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
-        /* Welcome Message Style: 100% Red Text for all words */
+        /* Full Red Welcome Message */
         .header-text p {
-            color: #ef4444; 
+            color: #ff4655; 
             margin: 0;
             font-size: 1.2rem;
             font-weight: bold;
             line-height: 1.5;
+            text-shadow: 0 0 8px rgba(255, 70, 85, 0.3);
         }
 
-        /* Main Content Container */
         .content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .section-title {
-            font-size: 1.8rem;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            border-left: 5px solid #00d2ff;
-            padding-left: 10px;
-            color: #f8fafc;
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ff4655;
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* TOWN HALL BUTTONS COLUMN/GRID STYLING */
+        /* TOWN HALL BUTTONS - GRID STYLING */
         .th-column-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 12px;
             margin-bottom: 40px;
         }
 
         .th-btn {
-            background-color: #1e293b;
-            border: 2px solid #334155;
-            color: #38bdf8;
-            padding: 12px 8px;
-            border-radius: 8px;
-            text-decoration: none;
+            background-color: #111827;
+            border: 2px solid #1f2937;
+            color: #9ca3af;
+            padding: 14px 8px;
+            border-radius: 10px;
+            cursor: pointer;
             font-weight: bold;
             font-size: 1rem;
             text-align: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.25s ease;
         }
 
-        .th-btn:hover {
-            background-color: #00d2ff;
-            color: #0f172a;
+        .th-btn:hover, .th-btn.active {
+            background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%);
+            color: #0b0f19;
             border-color: #00d2ff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
-        /* THE 5 BASE CATEGORIES GRID STYLING */
+        /* DYNAMIC LEVEL HEADER */
+        .current-level-display {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #00d2ff;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        /* NEON 5 BASE SLOTS GRID */
         .base-categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 40px;
         }
 
         .category-card {
-            background-color: #1e293b;
-            border: 2px solid #334155;
-            border-radius: 12px;
+            background-color: #111827;
+            border: 2px solid #1f2937;
+            border-radius: 16px;
             overflow: hidden;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
+            transform: translateY(-8px) scale(1.02);
+            border-color: #ff4655;
+            box-shadow: 0 0 25px rgba(255, 70, 85, 0.3);
         }
 
-        /* Style for Town Hall Base Preview Images */
-        .base-img-placeholder {
+        /* Image Display container */
+        .base-img-container {
             width: 100%;
-            height: 150px;
-            background-color: #334155;
+            height: 180px;
+            background-color: #1f2937;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #1f2937;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #94a3b8;
-            font-weight: bold;
-            font-size: 0.9rem;
-            object-fit: cover;
-            border-bottom: 2px solid #334155;
+        }
+
+        .base-img-container img {
+            width: auto;
+            height: 90%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .base-img-container img {
+            transform: scale(1.1) rotate(2deg);
         }
 
         .category-card h3 {
-            margin: 15px 0 10px 0;
-            color: #38bdf8;
-            font-size: 1.3rem;
+            margin: 15px 0 8px 0;
+            color: #ffffff;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .category-card p {
-            color: #94a3b8;
+            color: #9ca3af;
             font-size: 0.9rem;
             padding: 0 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             min-height: 40px;
         }
 
         .view-layout-btn {
             display: block;
-            background-color: #ef4444;
+            background: linear-gradient(90deg, #ff4655 0%, #ff2a3a 100%);
             color: white;
-            padding: 12px 0;
+            padding: 14px 0;
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
-            border-top: 1px solid #334155;
-            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border: none;
+            width: 100%;
+            cursor: pointer;
         }
 
         .view-layout-btn:hover {
-            background-color: #dc2626;
+            background: linear-gradient(90deg, #ff2a3a 0%, #ff0015 100%);
+            box-shadow: 0 -5px 15px rgba(255, 70, 85, 0.4);
         }
 
         /* Ad Slots */
         .ad-slot {
-            background-color: #1e293b;
+            background-color: #111827;
             border: 1px dashed #00d2ff;
-            color: #38bdf8;
+            color: #00d2ff;
             padding: 20px;
             text-align: center;
-            margin: 20px 0;
-            border-radius: 8px;
+            margin: 30px 0;
+            border-radius: 12px;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @media (min-width: 768px) {
@@ -193,7 +247,7 @@
             }
             .channel-logo {
                 margin-bottom: 0;
-                margin-right: 25px;
+                margin-right: 30px;
             }
         }
     </style>
@@ -212,70 +266,130 @@
 
     <div class="content">
         <div class="ad-slot">
-            🌐 Advertisement Slot (Earns money when users view/click)
+            ⚡ ADVERTISEMENT SLOT ⚡
         </div>
 
-        <h2 class="section-title">Select Town Hall Level</h2>
+        <h2 class="section-title"><span>▶</span> Select Town Hall Level</h2>
         <div class="th-column-container">
-            <a href="#" class="th-btn">TH 6</a>
-            <a href="#" class="th-btn">TH 7</a>
-            <a href="#" class="th-btn">TH 8</a>
-            <a href="#" class="th-btn">TH 9</a>
-            <a href="#" class="th-btn">TH 10</a>
-            <a href="#" class="th-btn">TH 11</a>
-            <a href="#" class="th-btn">TH 12</a>
-            <a href="#" class="th-btn">TH 13</a>
-            <a href="#" class="th-btn">TH 14</a>
-            <a href="#" class="th-btn">TH 15</a>
-            <a href="#" class="th-btn">TH 16</a>
-            <a href="#" class="th-btn">TH 17</a>
-            <a href="#" class="th-btn">TH 18</a>
+            <button class="th-btn" onclick="selectTH(6)">TH 6</button>
+            <button class="th-btn" onclick="selectTH(7)">TH 7</button>
+            <button class="th-btn" onclick="selectTH(8)">TH 8</button>
+            <button class="th-btn" onclick="selectTH(9)">TH 9</button>
+            <button class="th-btn" onclick="selectTH(10)">TH 10</button>
+            <button class="th-btn" onclick="selectTH(11)">TH 11</button>
+            <button class="th-btn" onclick="selectTH(12)">TH 12</button>
+            <button class="th-btn" onclick="selectTH(13)">TH 13</button>
+            <button class="th-btn" onclick="selectTH(14)">TH 14</button>
+            <button class="th-btn active" onclick="selectTH(15)">TH 15</button>
+            <button class="th-btn" onclick="selectTH(16)">TH 16</button>
+            <button class="th-btn" onclick="selectTH(17)">TH 17</button>
+            <button class="th-btn" onclick="selectTH(18)">TH 18</button>
         </div>
 
-        <h2 class="section-title">Town Hall Layout Categories</h2>
+        <div class="current-level-display" id="th-display-title">Town Hall 15 Layouts</div>
+
         <div class="base-categories-grid">
             
             <div class="category-card">
-                <div class="base-img-placeholder">📸 War Base Image Preview</div>
+                <div class="base-img-container">
+                    <img id="img-war" src="https://coc.guide/static/imgs/other/townhall15.png" alt="War Base">
+                </div>
                 <h3>War Bases</h3>
-                <p>Anti-3 star designs built to defend hard in Clan Wars.</p>
-                <a href="#" class="view-layout-btn">View Layouts</a>
+                <p>Anti-3 star setups designed to secure victories in Clan Wars.</p>
+                <button class="view-layout-btn" onclick="viewLayout('war')">View Layouts</button>
             </div>
 
             <div class="category-card">
-                <div class="base-img-placeholder">📸 Trophy Base Image Preview</div>
+                <div class="base-img-container">
+                    <img id="img-trophy" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Trophy Base">
+                </div>
                 <h3>Trophy Bases</h3>
-                <p>Protect your leagues and push ranks safely.</p>
-                <a href="#" class="view-layout-btn">View Layouts</a>
+                <p>Hard defense layouts to protect your legendary trophies.</p>
+                <button class="view-layout-btn" onclick="viewLayout('trophy')">View Layouts</button>
             </div>
 
             <div class="category-card">
-                <div class="base-img-placeholder">📸 Progress Base Image Preview</div>
+                <div class="base-img-container">
+                    <img id="img-progress" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Progress Base">
+                </div>
                 <h3>Progress Bases</h3>
-                <p>Easy-to-upgrade grids to track your building progress.</p>
-                <a href="#" class="view-layout-btn">View Layouts</a>
+                <p>Organized row grids to handle your upgrade queues smoothly.</p>
+                <button class="view-layout-btn" onclick="viewLayout('progress')">View Layouts</button>
             </div>
 
             <div class="category-card">
-                <div class="base-img-placeholder">📸 Showcase Base Image Preview</div>
+                <div class="base-img-container">
+                    <img id="img-showcase" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Showcase Base">
+                </div>
                 <h3>Showcase Bases</h3>
-                <p>Unique artistic layouts and cool wall decorations.</p>
-                <a href="#" class="view-layout-btn">View Layouts</a>
+                <p>Aesthetic designs, pixel art structures, and funny shapes.</p>
+                <button class="view-layout-btn" onclick="viewLayout('showcase')">View Layouts</button>
             </div>
 
             <div class="category-card">
-                <div class="base-img-placeholder">📸 Custom Base Image Preview</div>
+                <div class="base-img-container">
+                    <img id="img-custom" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Custom Base">
+                </div>
                 <h3>Custom Bases</h3>
-                <p>Special player-built strategic requests.</p>
-                <a href="#" class="view-layout-btn">View Layouts</a>
+                <p>Pro-built custom bases created specifically for subscribers.</p>
+                <button class="view-layout-btn" onclick="viewLayout('custom')">View Layouts</button>
             </div>
 
         </div>
 
         <div class="ad-slot">
-            🌐 Advertisement Slot
+            ⚡ ADVERTISEMENT SLOT ⚡
         </div>
     </div>
+
+    <script>
+        // Track the current selected Town Hall level
+        let currentTH = 15;
+
+        // Base URLs for official Town Hall game assets to make the UI look premium
+        const thImages = {
+            6: "https://coc.guide/static/imgs/other/townhall6.png",
+            7: "https://coc.guide/static/imgs/other/townhall7.png",
+            8: "https://coc.guide/static/imgs/other/townhall8.png",
+            9: "https://coc.guide/static/imgs/other/townhall9.png",
+            10: "https://coc.guide/static/imgs/other/townhall10.png",
+            11: "https://coc.guide/static/imgs/other/townhall11.png",
+            12: "https://coc.guide/static/imgs/other/townhall12.png",
+            13: "https://coc.guide/static/imgs/other/townhall13.png",
+            14: "https://coc.guide/static/imgs/other/townhall14.png",
+            15: "https://coc.guide/static/imgs/other/townhall15.png",
+            16: "https://coc.guide/static/imgs/other/townhall16.png",
+            17: "https://coc.guide/static/imgs/other/townhall17.png",
+            18: "https://coc.guide/static/imgs/other/townhall17.png" // Temporary fallback image asset
+        };
+
+        function selectTH(level) {
+            currentTH = level;
+            
+            // Update Title Text dynamically
+            document.getElementById('th-display-title').innerText = "Town Hall " + level + " Layouts";
+            
+            // Swap out all card images instantly to match the chosen level
+            const imgUrl = thImages[level] || thImages[15];
+            document.getElementById('img-war').src = imgUrl;
+            document.getElementById('img-trophy').src = imgUrl;
+            document.getElementById('img-progress').src = imgUrl;
+            document.getElementById('img-showcase').src = imgUrl;
+            document.getElementById('img-custom').src = imgUrl;
+
+            // Manage the active button visual highlight state
+            const buttons = document.querySelectorAll('.th-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add focus highlight back to the newly clicked level button
+            event.target.classList.add('active');
+        }
+
+        function viewLayout(category) {
+            alert("Awesome choice! Loading up the best " + category.toUpperCase() + " layouts for Town Hall " + currentTH + " now!");
+            // This is where we will map your direct Clash copy links next!
+        }
+    </script>
 
 </body>
 </html>
