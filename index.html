@@ -51,9 +51,9 @@
             font-size: 2.8rem;
         }
 
-        /* Welcome Message Style: Red text color */
+        /* Welcome Message Style: Full Red Text */
         .header-text p {
-            color: #ef4444;
+            color: #ef4444; 
             margin: 0;
             font-size: 1.2rem;
             font-weight: 500;
@@ -85,8 +85,8 @@
         /* TOWN HALL BUTTONS COLUMN/GRID STYLING */
         .th-column-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 12px;
             margin-bottom: 40px;
         }
 
@@ -94,11 +94,11 @@
             background-color: #1e293b;
             border: 2px solid #334155;
             color: #38bdf8;
-            padding: 15px 10px;
+            padding: 12px 8px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: center;
             transition: all 0.2s ease;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -112,52 +112,71 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
-        /* Layout Grid & Cards */
-        .grid {
+        /* THE 5 BASE CATEGORIES GRID STYLING */
+        .base-categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px), 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        @media (min-width: 600px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .card {
+        .category-card {
             background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 20px;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: #38bdf8;
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
         }
 
-        .card p {
+        /* Style for Town Hall Base Preview Images */
+        .base-img-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #94a3b8;
-            font-size: 0.95rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            object-fit: cover;
+            border-bottom: 2px solid #334155;
         }
 
-        .btn {
-            display: inline-block;
+        .category-card h3 {
+            margin: 15px 0 10px 0;
+            color: #38bdf8;
+            font-size: 1.3rem;
+        }
+
+        .category-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 0 15px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .view-layout-btn {
+            display: block;
             background-color: #ef4444;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 0;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
+            font-size: 1rem;
+            border-top: 1px solid #334155;
             transition: background 0.2s;
         }
 
-        .btn:hover {
+        .view-layout-btn:hover {
             background-color: #dc2626;
         }
 
@@ -219,21 +238,44 @@
             <a href="#" class="th-btn">TH 18</a>
         </div>
 
-        <h2 class="section-title">Featured Base Layouts</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>TH15 War Base</h3>
-                <p><strong>Best TH15 Anti-3 Star War Base</strong></p>
-                <p>Fully tested layout against pro strategies.</p>
-                <a href="#" class="btn">Copy Base Link</a>
+        <h2 class="section-title">Town Hall Layout Categories</h2>
+        <div class="base-categories-grid">
+            
+            <div class="category-card">
+                <div class="base-img-placeholder">📸 War Base Image Preview</div>
+                <h3>War Bases</h3>
+                <p>Anti-3 star designs built to defend hard in Clan Wars.</p>
+                <a href="#" class="view-layout-btn">View Layouts</a>
             </div>
 
-            <div class="card">
-                <h3>TH14 Trophy Base</h3>
-                <p><strong>TH14 Hybrid Farming Base</strong></p>
-                <p>Protect your Dark Elixir and Gold easily.</p>
-                <a href="#" class="btn">Copy Base Link</a>
+            <div class="category-card">
+                <div class="base-img-placeholder">📸 Trophy Base Image Preview</div>
+                <h3>Trophy Bases</h3>
+                <p>Protect your leagues and push ranks safely.</p>
+                <a href="#" class="view-layout-btn">View Layouts</a>
             </div>
+
+            <div class="category-card">
+                <div class="base-img-placeholder">📸 Progress Base Image Preview</div>
+                <h3>Progress Bases</h3>
+                <p>Easy-to-upgrade grids to track your building progress.</p>
+                <a href="#" class="view-layout-btn">View Layouts</a>
+            </div>
+
+            <div class="category-card">
+                <div class="base-img-placeholder">📸 Showcase Base Image Preview</div>
+                <h3>Showcase Bases</h3>
+                <p>Unique artistic layouts and cool wall decorations.</p>
+                <a href="#" class="view-layout-btn">View Layouts</a>
+            </div>
+
+            <div class="category-card">
+                <div class="base-img-placeholder">📸 Custom Base Image Preview</div>
+                <h3>Custom Bases</h3>
+                <p>Special player-built strategic requests.</p>
+                <a href="#" class="view-layout-btn">View Layouts</a>
+            </div>
+
         </div>
 
         <div class="ad-slot">
