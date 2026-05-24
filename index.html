@@ -17,6 +17,62 @@
             min-height: 100vh;
         }
 
+        /* LOGIN WALL GATEWAY OVERLAY */
+        #login-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #0f172a 0%, #060913 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: #0f172a;
+            border: 2px solid #00f2fe;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 450px;
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.3);
+        }
+
+        .login-box h2 {
+            margin: 0 0 15px 0;
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .google-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #ffffff;
+            color: #1e293b;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+
+        .google-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+
         /* CUSTOM HEADER */
         .main-header {
             background: linear-gradient(135deg, #0f172a 0%, #060913 100%);
@@ -24,6 +80,36 @@
             text-align: center;
             border-bottom: 2px solid #00f2fe;
             box-shadow: 0 5px 25px rgba(0, 242, 254, 0.15);
+            position: relative;
+        }
+
+        .user-profile-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0f172a;
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid #334155;
+        }
+
+        .user-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #00f2fe;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
         }
 
         .channel-logo {
@@ -44,7 +130,6 @@
             text-transform: uppercase;
         }
 
-        /* Full Red Welcome Message */
         .welcome-msg {
             color: #ef4444;
             max-width: 800px;
@@ -54,11 +139,12 @@
             line-height: 1.6;
         }
 
+        /* LAYOUT AND CONTENT CONTAINER */
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
-            flex: 1; /* Pushes footer to bottom */
+            flex: 1;
         }
 
         .section-title {
@@ -71,7 +157,6 @@
             padding-left: 12px;
         }
 
-        /* PREMIUM TOWN HALL HORIZONTAL SELECTOR GRID */
         .th-selector-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
@@ -100,7 +185,6 @@
             transform: translateY(-2px);
         }
 
-        /* LIVE LAYOUT CARDS GRID SYSTEM */
         .base-categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -175,14 +259,9 @@
             border: none;
             width: 100%;
             cursor: pointer;
-            transition: opacity 0.2s;
         }
 
-        .view-layout-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* PREMIUM SOCIAL & BUSINESS FOOTER */
+        /* PREMIUM FOOTER */
         .premium-footer {
             background-color: #0c1220;
             border-top: 1px solid #1e293b;
@@ -207,40 +286,39 @@
             transition: all 0.2s ease;
         }
 
-        .social-link.instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: #fff;
-        }
-        .social-link.discord {
-            background-color: #5865F2;
-            color: #fff;
-        }
-        .social-link.paypal {
-            background-color: #003087;
-            color: #fff;
-            border: 1px solid #0079C1;
-            box-shadow: 0 0 10px rgba(0, 121, 193, 0.4);
-        }
-        .social-link.email {
-            background-color: #00f2fe;
-            color: #060913;
-        }
+        .social-link.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; }
+        .social-link.discord { background-color: #5865F2; color: #fff; }
+        .social-link.paypal { background-color: #003087; color: #fff; border: 1px solid #0079C1; box-shadow: 0 0 10px rgba(0, 121, 193, 0.4); }
+        .social-link.email { background-color: #00f2fe; color: #060913; }
 
         .social-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255,255,255,0.15);
         }
 
-        .footer-credits {
-            color: #64748b;
-            font-size: 0.85rem;
-            margin: 0;
-        }
+        .footer-credits { color: #64748b; font-size: 0.85rem; margin: 0; }
     </style>
 </head>
 <body>
 
+    <div id="login-gate">
+        <div class="login-box">
+            <img src="Logo.png" alt="Clasher Aditya Logo" style="width:90px; height:90px; border-radius:50%; margin-bottom:15px; border:2px solid #00f2fe;">
+            <h2>Clasher Aditya</h2>
+            <p style="color:#94a3b8; font-size:0.95rem; margin-bottom:20px;">Please sign in below to unlock exclusive, verified Clash of Clans pro base layouts.</p>
+            <button class="google-btn" onclick="signInWithGoogle()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" style="width:18px; height:18px;">
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
     <header class="main-header">
+        <div class="user-profile-badge" id="user-badge" style="display:none;">
+            <img src="" id="user-avatar" class="user-img" alt="User Avatar">
+            <span id="user-display-name" style="font-size:0.9rem; font-weight:bold;">User</span>
+            <button class="logout-btn" onclick="signOutUser()">Logout</button>
+        </div>
         <a href="https://youtube.com/@clasheraditya44?si=QWO_ORRxdjUroZhd" target="_blank">
             <img src="Logo.png" alt="Clasher Aditya Logo" class="channel-logo">
         </a>
@@ -249,7 +327,6 @@
     </header>
 
     <div class="container">
-
         <h2 class="section-title">Select Town Hall level</h2>
         <div class="th-selector-container">
             <button class="th-btn" onclick="selectTH(6)">TH 6</button>
@@ -270,54 +347,37 @@
         <div id="th-display-title" style="font-size: 1.6rem; color: #00f2fe; font-weight: bold; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Town Hall 15 Layout Packs</div>
 
         <div class="base-categories-grid">
-            
             <div class="category-card">
-                <div class="base-img-container">
-                    <img id="img-war" src="https://coc.guide/static/imgs/other/townhall15.png" alt="War Base">
-                </div>
+                <div class="base-img-container"><img id="img-war" src="https://coc.guide/static/imgs/other/townhall15.png" alt="War Base"></div>
                 <h3>War Bases</h3>
                 <p id="desc-war">Pro configurations custom engineered to stop heavy 3-star meta compositions.</p>
                 <button class="view-layout-btn" onclick="viewLayout('war')">Copy Base Link</button>
             </div>
-
             <div class="category-card">
-                <div class="base-img-container">
-                    <img id="img-trophy" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Trophy Base">
-                </div>
+                <div class="base-img-container"><img id="img-trophy" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Trophy Base"></div>
                 <h3>Trophy Bases</h3>
                 <p id="desc-trophy">Secure structures explicitly optimized for rank climbing and Legend League defense.</p>
                 <button class="view-layout-btn" onclick="viewLayout('trophy')">Copy Base Link</button>
             </div>
-
             <div class="category-card">
-                <div class="base-img-container">
-                    <img id="img-progress" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Progress Base">
-                </div>
+                <div class="base-img-container"><img id="img-progress" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Progress Base"></div>
                 <h3>Progress Bases</h3>
                 <p id="desc-progress">Clean rows designed to structure builders and monitor upgrades efficiently.</p>
                 <button class="view-layout-btn" onclick="viewLayout('progress')">Copy Base Link</button>
             </div>
-
             <div class="category-card">
-                <div class="base-img-container">
-                    <img id="img-showcase" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Showcase Base">
-                </div>
+                <div class="base-img-container"><img id="img-showcase" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Showcase Base"></div>
                 <h3>Showcase Bases</h3>
                 <p id="desc-showcase">Unique cosmetic builds, decorative patterns, and creative community wall art maps.</p>
                 <button class="view-layout-btn" onclick="viewLayout('showcase')">Copy Base Link</button>
             </div>
-
             <div class="category-card">
-                <div class="base-img-container">
-                    <img id="img-custom" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Custom Base">
-                </div>
+                <div class="base-img-container"><img id="img-custom" src="https://coc.guide/static/imgs/other/townhall15.png" alt="Custom Base"></div>
                 <h3>Custom Bases</h3>
                 <p id="desc-custom">Subscribers special edition build paths created for ultimate customized match security.</p>
                 <button class="view-layout-btn" onclick="viewLayout('custom')">Copy Base Link</button>
             </div>
-
         </div>
-
     </div>
 
     <footer class="premium-footer">
@@ -330,32 +390,62 @@
         <p class="footer-credits">© 2026 Clasher Aditya. All rights reserved. Custom Engineered Grid Platform.</p>
     </footer>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Automated with your live setup keys from screen
+        const firebaseConfig = {
+            apiKey: "AIzaSyCjH65Bh_lCFNBiZOb7zM",
+            authDomain: "clasher-aditya.firebaseapp.com",
+            projectId: "clasher-aditya",
+            storageBucket: "clasher-aditya.firebaseapp.com",
+            messagingSenderId: "65255990006",
+            appId: "1:65255990006:web:bfd57a16f6d3348e4ad01b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        window.signInWithGoogle = function() {
+            signInWithPopup(auth, provider).then(() => {
+                document.getElementById('login-gate').style.display = 'none';
+            }).catch((err) => { alert("Login failed: " + err.message); });
+        }
+
+        window.signOutUser = function() {
+            signOut(auth).then(() => { location.reload(); });
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('login-gate').style.display = 'none';
+                document.getElementById('user-badge').style.display = 'flex';
+                document.getElementById('user-avatar').src = user.photoURL;
+                document.getElementById('user-display-name').innerText = user.displayName.split(" ")[0];
+            } else {
+                document.getElementById('login-gate').style.display = 'flex';
+                document.getElementById('user-badge').style.display = 'none';
+            }
+        });
+    </script>
+
     <script>
         let currentTH = 15;
-
         const thImages = {
-            6: "https://coc.guide/static/imgs/other/townhall6.png",
-            7: "https://coc.guide/static/imgs/other/townhall7.png",
-            8: "https://coc.guide/static/imgs/other/townhall8.png",
-            9: "https://coc.guide/static/imgs/other/townhall9.png",
-            10: "https://coc.guide/static/imgs/other/townhall10.png",
-            11: "https://coc.guide/static/imgs/other/townhall11.png",
-            12: "https://coc.guide/static/imgs/other/townhall12.png",
-            13: "https://coc.guide/static/imgs/other/townhall13.png",
-            14: "https://coc.guide/static/imgs/other/townhall14.png",
-            15: "https://coc.guide/static/imgs/other/townhall15.png",
-            16: "https://coc.guide/static/imgs/other/townhall16.png",
-            17: "https://coc.guide/static/imgs/other/townhall17.png",
+            6: "https://coc.guide/static/imgs/other/townhall6.png", 7: "https://coc.guide/static/imgs/other/townhall7.png",
+            8: "https://coc.guide/static/imgs/other/townhall8.png", 9: "https://coc.guide/static/imgs/other/townhall9.png",
+            10: "https://coc.guide/static/imgs/other/townhall10.png", 11: "https://coc.guide/static/imgs/other/townhall11.png",
+            12: "https://coc.guide/static/imgs/other/townhall12.png", 13: "https://coc.guide/static/imgs/other/townhall13.png",
+            14: "https://coc.guide/static/imgs/other/townhall14.png", 15: "https://coc.guide/static/imgs/other/townhall15.png",
+            16: "https://coc.guide/static/imgs/other/townhall16.png", 17: "https://coc.guide/static/imgs/other/townhall17.png",
             18: "https://coc.guide/static/imgs/other/townhall17.png"
         };
 
-        function selectTH(level) {
+        window.selectTH = function(level) {
             currentTH = level;
-            
-            // 1. Update Title Header 
             document.getElementById('th-display-title').innerText = "Town Hall " + level + " Layout Packs";
-            
-            // 2. Change all images simultaneously matching the chosen level
             const imgUrl = thImages[level] || thImages[15];
             document.getElementById('img-war').src = imgUrl;
             document.getElementById('img-trophy').src = imgUrl;
@@ -363,22 +453,19 @@
             document.getElementById('img-showcase').src = imgUrl;
             document.getElementById('img-custom').src = imgUrl;
 
-            // 3. Update descriptions dynamically inside card fields
             document.getElementById('desc-war').innerText = "Pro configurations custom engineered to stop heavy 3-star meta compositions at TH " + level + ".";
             document.getElementById('desc-trophy').innerText = "Secure structures explicitly optimized for rank climbing and Legend League defense at TH " + level + ".";
             document.getElementById('desc-progress').innerText = "Clean rows designed to structure builders and monitor upgrades efficiently at TH " + level + ".";
             document.getElementById('desc-showcase').innerText = "Unique cosmetic builds, decorative patterns, and creative community wall art maps at TH " + level + ".";
             document.getElementById('desc-custom').innerText = "Subscribers special edition build paths created for ultimate customized match security at TH " + level + ".";
 
-            // 4. Toggle active visual selector states on clicked elements
             const buttons = document.querySelectorAll('.th-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
         }
 
-        function viewLayout(category) {
+        window.viewLayout = function(category) {
             alert("Fetching your premium Clash link for Town Hall " + currentTH + " " + category.toUpperCase() + " base right now!");
-            // This is where we plug your exact clash of clans game-app map download redirect links next!
         }
     </script>
 </body>
