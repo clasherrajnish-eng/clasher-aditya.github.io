@@ -5,9 +5,11 @@
     <title>Clasher Aditya | Premium Layout Engine</title>
     <style>
         body { background: #0b0e14; color: white; font-family: sans-serif; text-align: center; }
+        /* This keeps the gate hidden until we specifically tell it to show */
         #login-gate { 
+            display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); display: flex; justify-content: center; 
+            background: rgba(0,0,0,0.95); justify-content: center; 
             align-items: center; z-index: 1000; 
         }
         .gate-box { border: 2px solid #00f2ff; padding: 40px; border-radius: 20px; }
@@ -19,14 +21,13 @@
     <div id="login-gate">
         <div class="gate-box">
             <h1>CLASHER ADITYA</h1>
-            <p>Please sign in to unlock exclusive layouts.</p>
+            <p>Please sign in to continue.</p>
             <button onclick="signInWithGoogle()">Sign in with Google</button>
         </div>
     </div>
 
-    <h1>CLASHER ADITYA</h1>
-    <div onclick="copyBase('LINK_HERE_1')"><button>Copy War Base</button></div>
-    <div onclick="copyBase('LINK_HERE_2')"><button>Copy Trophy Base</button></div>
+    <h1>Welcome, Clasher!</h1>
+    <button onclick="copyBase('LINK_HERE_1')">Copy War Base</button>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -45,18 +46,26 @@
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // Login Logic
+        // Check login status on page load
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // If NO user is signed in, we show the gate
+                document.getElementById('login-gate').style.display = 'flex';
+            } else {
+                // If user IS signed in, we keep it hidden
+                document.getElementById('login-gate').style.display = 'none';
+            }
+        });
+
         window.signInWithGoogle = () => {
             signInWithPopup(auth, provider).then(() => {
-                document.getElementById('login-gate').style.display = 'none';
+                location.reload(); 
             });
         };
 
-        // Copy Engine (10 limit)
         window.copyBase = (link) => {
             let count = parseInt(localStorage.getItem('copyCount') || "0");
             if (count >= 10) {
-                alert("You've reached your free limit! Please sign in.");
                 document.getElementById('login-gate').style.display = 'flex';
             } else {
                 count++;
@@ -64,13 +73,6 @@
                 window.open(link, '_blank');
             }
         };
-
-        // Check if already logged in
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById('login-gate').style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>
